@@ -101,7 +101,8 @@ source.complete = function(self, _, callback)
 end
 
 source.is_available = function()
-  return vim.fn.expand("%:t") == "conanfile.txt" and vim.fn.executable("conan")
+  local filename = vim.fn.expand("%:t")
+  return (filename == "conanfile.txt" or filename == "conanfile.py") and vim.fn.executable("conan")
 end
 
 source.get_keyword_pattern = function()
